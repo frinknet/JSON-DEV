@@ -1,5 +1,5 @@
-JavaScript Object Notation for Data Expectation and Validation
-==============================================================
+JSON - Data Expectation and Validation
+======================================
 
 JSON-DEV is a simple specification for self-documenting JSON APIs whether RESTful or customized. JSON-DEV
 is a complement to JSON-P allowing validations and expectations to be delivered as part of the parameter set.
