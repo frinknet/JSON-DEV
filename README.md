@@ -6,8 +6,8 @@ JSON-DEV is a simple specification for self-documenting JSON APIs.
 JSON-DEV is a complement to JSON-P allowing validations and schema expectations
 to be delivered as part of the parameter set.
 
-JSON-DEV Basics
----------------
+Basics Response Objects
+-----------------------
 Successful JSON-DEV output ALWAYS contains a boolean status atribute:
 
 ```javascript
