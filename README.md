@@ -6,7 +6,7 @@ JSON-DEV is a simple specification for self-documenting JSON APIs.
 JSON-DEV is a complement to JSON-P allowing validations and schema expectations
 to be delivered as part of the parameter set.
 
-Basic Structure
+JSON-DEV Basics
 ---------------
 Successful JSON-DEV output ALWAYS contains a boolean status atribute:
 
@@ -45,16 +45,11 @@ structure will also be acompanied:
 }
 ```
 
-The data structure used for both schema and validation uses the same
-these takes the form of an array with two to
-four items.
-
-  - string label
-  - mixed type
-  - boolean required
-  - object options
-
-For example:
+Schema + Validation
+-------------------
+The data structure used for both schema and validation uses the same these takes the
+form of an array with two to four items: a label string, data type, flag whether
+required, and an object of specified options.
 
 ```javascript
 [
@@ -79,11 +74,15 @@ For example:
 ]
 ```
 
-JSON-DEV is ment as a means to encapsulate expectations for values in the data structure.
-The actual definition of the specified type may be specific to the application.
+The actual meaning in the definition of specified types must be given by the
+application. JSON-DEV is merely an encapsulation specifications any meaning for
+specific data types SHOULD be provied in the defintions JSON.
 
-Ideally, the data API should provide an endpoint named **api_url/definitions** which lists all possible
-types with an explanation of their options. The data format for this is as follows:
+Type Definitions
+----------------
+Ideally, the data API should provide an endpoint named **api_url/definitions** which
+lists all possible types with an explanation of their options. The data format for
+this is as follows:
 
 ```javascript
 {
