@@ -59,22 +59,22 @@ Ideally, the data API should provide an endpoint named **api_url/explain_types**
     message: "Examples of valid types",
     data: [
         "boolean": [ "Boolean variable, true or false", "boolean", {
-            "positive": "positive value. Defaults to bitwise true",
-            "negative": "negative value. Defaults to bitwise false",
+            "positive": [ "positive value", true ],
+            "negative": [ "negative value", false ]
         } ],
         "string": [ "A non-empty string", "string", {
-            "values": "array of expected values"
+            "values": [ "array of expected values", [] ]
         } ],
         "integer": [ "Any signed normal number", "integer", {
-            "values": "array of expected values"
+            "values": [ "array of expected values", [] ]
         } ],
         "float": [ "Any floating point number","float",  {
-            "values": "array of expected values"
+            "values": [ "array of expected values", [] ]
         } ],
         "[]": [ "alternate expectations", [] ],
         "{}": [ "array of objects", {}, {
-            "max": "maximum number of objects in array",
-            "min": "minimum number of objects in array"
+            "max": [ "maximum number of objects in array", 0 ],
+            "min": [ "minimum number of objects in array", 0 ]
         } ]
     ]
 }
