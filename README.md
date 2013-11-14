@@ -1,5 +1,5 @@
-JavaScript Object Notation with Definition, Expectation + Validation
-====================================================================
+JSON Definition, Expectation and Validation
+===========================================
 
 JSON-DEV is a simple specification for self-documenting JSON APIs.
 
