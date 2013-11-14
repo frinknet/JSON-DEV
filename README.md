@@ -82,32 +82,40 @@ For example:
 JSON-DEV is ment as a means to encapsulate expectations for values in the data structure.
 The actual definition of the specified type may be specific to the application.
 
-Ideally, the data API should provide an endpoint named **api_url/definitions** which lists all possible types with an explanation of their options:
+Ideally, the data API should provide an endpoint named **api_url/definitions** which lists all possible
+types with an explanation of their options. The data format for this is as follows:
 
 ```javascript
 {
-    status: true,
-    message: "Examples of valid types",
-    data: [
-        "boolean": [ "Boolean variable, true or false", "boolean", {
-            "positive": [ "positive value", true ],
-            "negative": [ "negative value", false ]
-        } ],
-        "string": [ "A non-empty string", "string", {
-            "values": [ "array of expected values", [] ]
-        } ],
-        "integer": [ "Any signed normal number", "integer", {
-            "values": [ "array of expected values", [] ]
-        } ],
-        "float": [ "Any floating point number","float",  {
-            "values": [ "array of expected values", [] ]
-        } ],
-        "[]": [ "alternate expectations", [] ],
-        "{}": [ "array of objects", {}, {
-            "max": [ "maximum number of objects in array", 0 ],
-            "min": [ "minimum number of objects in array", 0 ]
-        } ]
-    ]
+  "type": ["Definition String", {
+    "options": [ "Option Definition", "Default Value" ]
+  } ]
 }
 ```
 
+```javascript
+{
+  "status": true,
+  "message": "Examples of valid types",
+  "data": [
+    "boolean": [ "Boolean variable, true or false", {
+      "positive": [ "positive value", true ],
+      "negative": [ "negative value", false ]
+    } ],
+    "string": [ "A non-empty string", "string", {
+      "values": [ "array of expected values", [] ]
+    } ],
+    "integer": [ "Any signed normal number", "integer", {
+      "values": [ "array of expected values", [] ]
+    } ],
+    "float": [ "Any floating point number","float",  {
+      "values": [ "array of expected values", [] ]
+    } ],
+    "[]": [ "alternate expectations" ],
+    "{}": [ "array of objects", {
+      "max": [ "maximum number of objects in array", 0 ],
+      "min": [ "minimum number of objects in array", 0 ]
+    } ]
+  ]
+}
+```
