@@ -1,0 +1,28 @@
+["Validation Alternants" [
+    ["Boolean Only", {
+        "percentage": ["Percentage Amount", "percentage", true],
+        "currency": ["Currency Amount", "currency", true],
+        "yesno": ["Yes/No Setting", "yesno", true],
+        "truefalse": ["True/False Switch", "truefalse", true],
+        "boolean": ["Boolean Setting", "boolean", true],
+    }, true, {"max": 1}],
+    ["Amounts with Optional Phone and Zip", {
+        "percentage": ["Percentage Amount", "percentage", true],
+        "currency": ["Currency Amount", "currency", true],
+        "usphone": ["US Phone Number", "usphone", false],
+        "uszip": ["US Zip Code", "uszip", false],
+    }, true, {"max": 1}],
+    ["Everything Required", {
+        "percentage": ["Percentage Amount", "percentage", true],
+        "currency": ["Currency Amount", "currency", true],
+        "yesno": ["Yes/No Setting", "yesno", true],
+        "truefalse": ["True/False Switch", "truefalse", true],
+        "boolean": ["Boolean Setting", "boolean", true],
+        "string": ["String Value", "string", true],
+        "phone": ["International Phone Number", "phone", true],
+        "usphone": ["US Phone Number", "usphone", true],
+        "uszip": ["US Zip Code", "uszip", true],
+        "empty": ["Empty Value", "empty", true],
+        "filled": ["Filled Value", "filled", true],
+    }, true, {"max": 1}]
+]
