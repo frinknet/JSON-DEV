@@ -1,5 +1,5 @@
-JSON - Data Expectation and Validation
-======================================
+JSON - Deffinition, Expectation and Validation
+==============================================
 
 JSON-DEV is a simple specification for self-documenting JSON APIs whether RESTful or customized. JSON-DEV
 is a complement to JSON-P allowing validations and expectations to be delivered as part of the parameter set.
@@ -51,7 +51,7 @@ For example:
 JSON-DEV is ment as a means to encapsulate expectations for values in the data structure.
 The actual definition of the specified type may be specific to the application.
 
-Ideally, the data API should provide an endpoint named **api_url/explain_types** which lists all possible types with explanation of:
+Ideally, the data API should provide an endpoint named **api_url/definitions** which lists all possible types with explanation of:
 
 ```javascript
 {
