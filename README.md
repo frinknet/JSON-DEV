@@ -1,9 +1,10 @@
-JSON - Deffinition, Expectation and Validation
-==============================================
+JavaScript Object Notation with Definition, Expectation + Validation
+====================================================================
 
-JSON-DEV is a simple specification for self-documenting JSON APIs whether RESTful or customized. JSON-DEV
-is a complement to JSON-P allowing validations and expectations to be delivered as part of the parameter set.
+JSON-DEV is a simple specification for self-documenting JSON APIs.
 
+JSON-DEV is a complement to JSON-P allowing validations and schema expectations
+to be delivered as part of the parameter set.
 
 Basic Structure
 ---------------
@@ -11,20 +12,31 @@ Successful JSON-DEV output ALWAYS contains a boolean status atribute:
 
 ```javascript
 {
-  "status": true
+  "status": boolean
 }
 ```
 
-Successful JSON-DEV output USUALLY contains a message string and/or a data structure of mixed type:
+Successful JSON-DEV output USUALLY contains a message string or a data response.
+There is no specification restricting one or the other. The only requirement is
+that the message MUST be a string whereas the data can be any valid JSON data
+type.
 
 ```javascript
 {
-  "message": "string",
+  "message": string,
   "data": mixed
 }
 ```
 
-When the JSON-DEV endpoint is passed the query string variables **schema** or **validation** the addtional data structure will also be acompanied:
+The message does not have any required application but may be used as an error
+message displayed to a user or as a simple text explination of the process that
+produced the JSON in question.
+
+The data structured is meant to be used by an application in a manner hinted by the
+schema and validation endpoints. Because of the verbose nature of these structures
+they are only provided upon speciate request. When the JSON-DEV endpoint is passed
+the query string variables **schema** and **validation** the addtional data
+structure will also be acompanied:
 
 ```javascript
 {
@@ -33,7 +45,9 @@ When the JSON-DEV endpoint is passed the query string variables **schema** or **
 }
 ```
 
-The data structure used for both of these takes the form of an array with two to four items.
+The data structure used for both schema and validation uses the same
+these takes the form of an array with two to
+four items.
 
   - string label
   - mixed type
@@ -43,9 +57,26 @@ The data structure used for both of these takes the form of an array with two to
 For example:
 
 ```javascript
-[ "Optional Boolean", "boolean" ]
-[ "Required String", "string", true ]
-[ "Optional Boolean with value names", "boolean", false, {"positive": "yes", "negative": "no"} ]
+[
+  "Optional Boolean",
+  "boolean"
+]
+
+[
+  "Required String",
+  "string",
+  true
+]
+
+[
+  "Optional Boolean with value names",
+  "boolean",
+  false,
+  {
+    "positive": "yes",
+    "negative": "no"
+  }
+]
 ```
 
 JSON-DEV is ment as a means to encapsulate expectations for values in the data structure.
