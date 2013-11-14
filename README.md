@@ -45,8 +45,8 @@ structure will also be acompanied:
 }
 ```
 
-Schema + Validation
--------------------
+Schema for Expectation + Validation
+-----------------------------------
 The data structure used for both schema and validation uses the same these takes the
 form of an array with two to four items: a label string, data type, flag whether
 required, and an object of specified options.
