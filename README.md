@@ -35,10 +35,10 @@ When the JSON-DEV endpoint is passed the query string variables **schema** or **
 
 The data structure used for both of these takes the form of an array with two to four items.
 
-    # string label
-    # mixed type
-    # boolean required
-    # object options
+  - string label
+  - mixed type
+  - boolean required
+  - object options
 
 For example:
 
@@ -51,7 +51,7 @@ For example:
 JSON-DEV is ment as a means to encapsulate expectations for values in the data structure.
 The actual definition of the specified type may be specific to the application.
 
-Ideally, the data API should provide an endpoint named **api_url/definitions** which lists all possible types with explanation of:
+Ideally, the data API should provide an endpoint named **api_url/definitions** which lists all possible types with an explanation of their options:
 
 ```javascript
 {
