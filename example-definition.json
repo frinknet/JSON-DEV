@@ -1,0 +1,24 @@
+{
+  "status": true,
+  "message": "Examples of valid types",
+  "data": [
+    "boolean": [ "Boolean variable, true or false", {
+      "positive": [ "positive value", true ],
+      "negative": [ "negative value", false ]
+    } ],
+    "string": [ "A non-empty string", "string", {
+      "values": [ "array of expected values", [] ]
+    } ],
+    "integer": [ "Any signed normal number", "integer", {
+      "values": [ "array of expected values", [] ]
+    } ],
+    "float": [ "Any floating point number","float",  {
+      "values": [ "array of expected values", [] ]
+    } ],
+    "[]": [ "alternate expectations" ],
+    "{}": [ "array of objects", {
+      "max": [ "maximum number of objects in array", 0 ],
+      "min": [ "minimum number of objects in array", 0 ]
+    } ]
+  ]
+}

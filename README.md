@@ -76,13 +76,18 @@ required, and an object of specified options.
 
 The actual meaning in the definition of specified types must be given by the
 application. JSON-DEV is merely an encapsulation specifications any meaning for
-specific data types SHOULD be provied in the defintions JSON.
+specific data types should be provied in the defintions JSON.
 
 Type Definitions
 ----------------
-Ideally, the data API should provide an endpoint named **api_url/definitions** which
-lists all possible types with an explanation of their options. The data format for
-this is as follows:
+The JSON API should ALWAYS provide an endpoint simply named **api/definitions**
+which lists all possible data types with an explanation of their options.
+
+The data format for the definition file is an object with each type defined by an
+arran with two indices, the first a string containing a textual description and the
+second defining an opject full of option definitions. Option definitions also
+contian an array with two indices discribing the textual definition and the default
+value.
 
 ```javascript
 {
@@ -92,29 +97,5 @@ this is as follows:
 }
 ```
 
-```javascript
-{
-  "status": true,
-  "message": "Examples of valid types",
-  "data": [
-    "boolean": [ "Boolean variable, true or false", {
-      "positive": [ "positive value", true ],
-      "negative": [ "negative value", false ]
-    } ],
-    "string": [ "A non-empty string", "string", {
-      "values": [ "array of expected values", [] ]
-    } ],
-    "integer": [ "Any signed normal number", "integer", {
-      "values": [ "array of expected values", [] ]
-    } ],
-    "float": [ "Any floating point number","float",  {
-      "values": [ "array of expected values", [] ]
-    } ],
-    "[]": [ "alternate expectations" ],
-    "{}": [ "array of objects", {
-      "max": [ "maximum number of objects in array", 0 ],
-      "min": [ "minimum number of objects in array", 0 ]
-    } ]
-  ]
-}
-```
+See **example-definition.json** for a demonstration of what a JSON definitions file
+might look like.
