@@ -7,10 +7,6 @@ the API. Furthermore, JSON-DEV is intended to create a standard definition of
 validation criteria that can be shared between systems implemented in different
 languages and tehcnologies.
 
-This specification DOES NOT define valid data type but merely the syntax for
-encapsulation of definition, expectation and validation in a concise JSON format
-suitable to be read by both machine and human.
-
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119][].
@@ -44,17 +40,16 @@ the message MAY be used as a simple text explination of a process or any other
 purpose determined by the suplier of the JSON endpoints. However, the message is
 RECOMENDED to be used to provide a textual error message to displayed to a user.
 
-The data structured is RECOMENDED to be used by an application in a manner hinted by the
-schema and validation. JSON clients MAY use the data in a manor contrary to the
+The data structured is RECOMENDED to be used by an application in a manner hinted by
+the schema and validation. JSON clients MAY use the data in a manor contrary to the
 schema but MUST NOT require fields which the schema defines as optional.
 
 Schema for Expectation + Validation
 -----------------------------------
-A JSON endpoint SHOULD provide a schema for both expectation and validataion upone
-request. Because of the verbose nature of these structures they are only provided
-upon speciate request. When the JSON API endpoint is passed either query string
-variables **schema** and **validation** the addtional schema requested should be
-appended to the JSON delivery.
+When the JSON API endpoint is passed the query string variables **schema** and
+**validation** the addtional schema requested SHOULD be appended to the JSON
+delivery. Because of the verbose nature of these structures they SHOULD NOT be
+provided by default but only on special request.
 
 ```javascript
 {
@@ -63,9 +58,10 @@ appended to the JSON delivery.
 }
 ```
 
-The data structure used for both schema and validation uses the same these takes the
-form of an array with two to four items: a label string, data type, flag whether
-required, and an object of specified options.
+The format for each validation object is an array with two REQUIRED field followed
+by two OPTIONAL fields: a label string, the data type or an object containing more
+validations, a flag to specify whether a field is expected or optional, and an
+object of specified more advanced options.
 
 ```javascript
 [
@@ -90,31 +86,65 @@ required, and an object of specified options.
 ]
 ```
 
-The actual meaning in the definition of specified types must be given by the
-application. JSON-DEV is merely an encapsulation specifications any meaning for
-specific data types should be provied in the defintions JSON.
+NOTE:
+
+
+No data type implications are prodvided in the JSON-DEV standard. JSON-DEV provides
+the syntax for encapsulation of expectation and validation in a concise JSON format
+suitable to be read by both machine and human.
+
 
 Data Type Definitions
 ---------------------
-The JSON API should ALWAYS provide an endpoint simply named **api/definitions**
-which lists all possible data types with an explanation of their options.
+Any meaning for specific data types SHOULD be provied in the defintions JSON object.
+The endpoint RECOMMENDED to lists all possible data types with an explanation of
+their options in **api/definitions**.
 
-The data format for the definition file is an object with each type defined by an
-arran with two indices, the first a string containing a textual description and the
-second defining an opject full of option definitions. Option definitions also
-contian an array with two indices discribing the textual definition and the default
-value.
+The definition object MUST contain a data object listing every type used by the API.
+Each data type MUST BE defined by both string containing a textual description andan
+object defining the specific options of that data type. Option definitions MUST
+contain textual definition and the default value.
 
 ```javascript
 {
-  "type": ["Definition String", {
-    "options": [ "Option Definition", "Default Value" ]
-  } ]
+  "status": true,
+  "message": "Data Definitions",
+  "data": {
+    "type": [
+      "Type Definition",
+      {
+        "options": {
+          "option_name": [
+            "Option Definition",
+            "Default Value"
+          ]
+        }
+      }
+    ]
+  }
 }
 ```
 
-See **example-definition.json** for a demonstration of what a JSON definitions file
-might look like.
+The definitions API MAY allow a drilldown of specific types using the URI
+**api/definitions/{type}** where type is the type you whish to define. When
+implementing the definitions drill-down the reponse SHOULD contain the message with
+a textual definition and the data with options informations.
+
+```javascript
+{
+  "status": true,
+  "message": "Type Definition",
+  "data": {
+    "option_name": [
+      "Option Definition",
+      "Default Value"
+    ]
+  }
+}
+```
+
+See **example-definition.json** for complete a demonstration of a valid JSON-DEV
+definition object.
 
 JSON-DEV is a complement to JSON-P allowing validations and schema expectations
 to be delivered as part of the parameter set.
